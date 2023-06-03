@@ -24,7 +24,7 @@
 
 
 
-## DEPLOYMENT OF WORDPRESS SITE
+## DEPLOYMENT OF STOCKPRO WORDPRESS SITE
 1. Installation of docker
 
    $ sudo apt install docker.io -y
@@ -50,6 +50,99 @@
    https://ip_address:8080
    
    
+## RUNNING A CI/CD PIPELINE ON STOCKPRO WORDPRESS SITE
+BUILD STAGE 
+Create a scripts folder on the gitlab repository
+Create a build_script.sh file in the scripts folder
+Input the following commands in build_script.sh
+echo "SRS_HOST=$SRS_HOST" >> .env
+echo "SRS_USER=$SRS_USER" >> .env
+echo "SRS_PASSWORD=$SRS_PASSWORD" >> .env
+echo "SRS_DB=$SRS_DB" >> .env
+docker build -t $SOCIAL_REPUTATION_IMAGE .
+docker save $SOCIAL_REPUTATION_IMAGE > social_reputation.tar
+     Note: .env file should not be created on the repo.
+Add the following commands to the .gitlab-ci.yml
+    stage: build    
+    image: docker:20.10.13-alpine3.15
+    services:
+       - docker:20.10.13-dind-alpine3.15
+    script:
+        - chmod u+x scripts/build_script.sh
+- ./scripts/build_script.sh
+Note: To test if .env file is created on the artifact, add the following to the script of the build stage on the .gitlab-ci.yml
+if [ -f ".env" ]; then echo ".env exists in the artifact."; else echo ".env does not exist in the artifact."; fi
+
+The result on the runner will be:
+
+TESTING THE ARTIFACT
+Download the artifact from gitlab.
+Go to CICD menu and click “pipeline”
+Click on “artifact” to download
+
+
+Navigate to the file directory on the terminal.
+
+Unzip the artifact:
+unzip artifacts.zip.tar
+Load the image from the artifact using:
+docker load --input social_reputation.tar
+To view the docker image:
+docker images 
+Clone the repo and create a docker container:
+docker-compose -f docker-compose-prod.yml up -d --build 
+
+
+PUSH STAGE 
+Create a before_script.sh in the scripts directory.
+Input the following commands in the before_script.sh
+apk add --no-cache sshpass
+which ssh-agent || ( apk update && apk add openssh-client )
+mkdir -p ~/.ssh
+touch ~/.ssh/id_rsa
+echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
+echo -e "Host *\nStrictHostKeyChecking no\n" > ~/.ssh/config
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+chmod 700 ~/.ssh
+Create a docker_installation_script.sh in the scripts directory.
+Input the following commands to install docker and docker-compose  in the docker_installation_script.sh
+sudo apt-get update -y
+sudo apt-get install docker.io -y
+sudo docker -v
+sudo systemctl enable --now docker
+sudo apt  install docker-compose -y 
+Add the following commands to the .gitlab-ci.yml
+
+stage: push
+    image: docker:20.10.13-alpine3.15
+    before_script:
+        - ls scripts/*	
+        - chmod u+x scripts/before_script.sh
+        - ./scripts/before_script.sh
+    script:
+        - chmod u+x scripts/push_script.sh
+        - ./scripts/push_script.sh
+ 	       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S chmod u+x docker_installation_script.sh && echo '$SERVER_PASSWORD' | sudo -S ./docker_installation_script.sh"
+
+DEPLOY STAGE - [Task: 1325]
+Create a deploy_script.sh in the scripts directory.
+Input the following commands in the deploy_script.sh
+sudo docker load --input social_reputation.tar
+sudo docker stop $SOCIAL_REPUTATION_CONTAINER && sudo docker rm $SOCIAL_REPUTATION_CONTAINER
+sudo docker system prune -f
+sudo docker volume prune -f
+docker-compose -f docker-compose-prod.yml up -d --build
+Add the following commands to the .gitlab-ci.yml
+stage: deploy
+    image: docker:20.10.13-alpine3.15
+    before_script:
+        - chmod u+x scripts/before_script.sh
+        - ./scripts/before_script.sh
+    script:      
+        - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export SOCIAL_REPUTATION_IMAGE=$SOCIAL_REPUTATION_IMAGE && export SRS_HOST=$SRS_HOST && export SRS_USER=$SRS_USER && export SRS_DB=$SRS_DB && chmod u+x deploy_script.sh && ./deploy_script.sh'"
+
 
 
 

@@ -1,0 +1,24 @@
+//@version=5
+strategy('STOCKPRO TRADING SIGNALS', overlay=true)
+
+// The variables displays formulaes used in calculating risk management 
+sma_per = input.int(200, title='SMA Lookback Period', minval=1)
+sl_inp = input(2.0, title='Stop Loss %') / 100
+tp_inp = input(1.0, title='Take Profit %') / 100
+
+// Plots a simple moving average at the close of number of candles
+sma = ta.sma(close, sma_per)
+
+// Plots the take-profit and stop-loss 
+stop_level = strategy.position_avg_price * (1 - sl_inp)
+take_level = strategy.position_avg_price * (1 + tp_inp)
+
+// Triggers a buy and stop trade
+strategy.entry('Buy', strategy.long, when=ta.crossover(close, sma))
+
+strategy.exit('Stop', 'Buy', stop=stop_level, limit=take_level)
+
+// Plots the take-profit and stop-loss
+plot(sma, color=color.new(color.orange, 0), linewidth=2)
+plot(stop_level, color=color.new(color.red, 0), style=plot.style_linebr, linewidth=2)
+plot(take_level, color=color.new(color.green, 0), style=plot.style_linebr, linewidth=2)

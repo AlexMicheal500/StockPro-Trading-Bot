@@ -12,6 +12,7 @@
 ![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/24f9cfc5-b873-430d-a44c-00faeb579d46)
 5. Then you will see displayed your chosen stock.
 ![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/623d6196-cb2f-4f1c-889e-8ec7e1edfa43)
+6. Copy the content of the stockpro_trading_bot_pinescript file and paste on a new script.
 
 
 

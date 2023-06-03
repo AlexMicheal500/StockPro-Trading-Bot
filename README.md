@@ -7,6 +7,8 @@ ii. Deployment of StockPro WordPress Website
 
 iii. Running a CI/CD Pipeline on StockPro WordPress Website.
 
+iv. Building StockPro WordPress Website 
+
 ## i. Video Link To How To Install StockPro Bot: https://vimeo.com/manage/videos/832894106/privacy
 ## Steps:
 1. Visit tradingview.com through a browser or install a desktop version or or mobile version.
@@ -152,8 +154,12 @@ stage: deploy
         - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export SOCIAL_REPUTATION_IMAGE=$SOCIAL_REPUTATION_IMAGE && export SRS_HOST=$SRS_HOST && export SRS_USER=$SRS_USER && export SRS_DB=$SRS_DB && chmod u+x deploy_script.sh && ./deploy_script.sh'"
 
 
+## iv. Building StockPro WordPress Website
+1. Theme used is Astra
 
+2. Plugin used is Elemntor Pro and Starter Template and Contact Form 7
 
+3. Templates used are Tech Agency from Astra
 
 
 

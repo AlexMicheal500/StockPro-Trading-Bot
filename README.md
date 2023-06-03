@@ -24,7 +24,7 @@
 
 
 
-DEPLOYMENT OF WORDPRESS SITE
+## DEPLOYMENT OF WORDPRESS SITE
 1. Installation of docker
 
    $ sudo apt install docker.io -y

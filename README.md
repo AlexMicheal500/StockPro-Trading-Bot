@@ -5,7 +5,7 @@ i. How To Install StockPro Bot
 
 ii. Deployment of StockPro WordPress Website
 
-iii. Running a CI/CD Pipeline on StockPro WordPress Website.
+iii. Running a CI/CD Pipeline on StockPro WordPress Website. LINK TO GITLAB https://gitlab.com/alex_gitlab1/gassnownow-web-app
 
 iv. Building StockPro WordPress Website 
 

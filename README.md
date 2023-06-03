@@ -1,13 +1,13 @@
 # StockPro-Trading-Bot-Documentation
 ## List of Documentations For Full Project:
 
-i. How To Install Bot
+i. How To Install StockPro Bot
 
 ii. Deployment of StockPro WordPress Website
 
 iii. Running a CI/CD Pipeline on StockPro WordPress Website.
 
-## i. Video Link To How To Install Bot: https://vimeo.com/manage/videos/832894106/privacy
+## i. Video Link To How To Install StockPro Bot: https://vimeo.com/manage/videos/832894106/privacy
 ## Steps:
 1. Visit tradingview.com through a browser or install a desktop version or or mobile version.
 2. Click on "Get Started" to sign up for a tradingview account

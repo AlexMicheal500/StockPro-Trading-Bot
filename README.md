@@ -23,6 +23,11 @@
 ![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/9e1d7692-c8ec-41f6-bdf1-220285c19c5a)
 
 
+DEPLOYMENT OF WORDPRESS SITE
+1. Installation of docker
+   $ sudo apt install docker.io -y
+2. Installation of docker-compose
+   $ sudo apt install docker-compose -y
 
 
 

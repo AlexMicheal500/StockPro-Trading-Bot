@@ -17,6 +17,11 @@
 7. Paste content, input name of bot and publish
 ![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/4d5f47cf-48a5-4f43-b101-db06ad1173b0)
 ![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/29e380f5-4731-4756-b0af-b91beb0997f7)
+8. Click "Add to Chart" and reduce the tab.
+![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/6145b784-31bc-4462-abd5-dba09ce7308b)
+9. Then your bot is displayed on the chart.
+![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/9e1d7692-c8ec-41f6-bdf1-220285c19c5a)
+
 
 
 

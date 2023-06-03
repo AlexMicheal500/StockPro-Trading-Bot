@@ -14,7 +14,10 @@
 ![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/623d6196-cb2f-4f1c-889e-8ec7e1edfa43)
 6. Copy the content of the stockpro_trading_bot_pinescript file and paste on a new script.
 ![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/d79e67da-1560-4bb6-a140-69ba64053c27)
-7. Input name and publish
+7. Paste content, input name of bot and publish
+![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/4d5f47cf-48a5-4f43-b101-db06ad1173b0)
+![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/29e380f5-4731-4756-b0af-b91beb0997f7)
+
 
 
 

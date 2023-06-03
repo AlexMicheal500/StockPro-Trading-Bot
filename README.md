@@ -1,5 +1,5 @@
 # StockPro-Trading-Bot-Documentation
-
+##Video Link To How To Install Bot: https://vimeo.com/manage/videos/832894106/privacy
 ## Steps:
 1. Visit tradingview.com through a browser or install a desktop version or or mobile version.
 2. Click on "Get Started" to sign up for a tradingview account

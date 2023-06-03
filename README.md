@@ -1,5 +1,13 @@
 # StockPro-Trading-Bot-Documentation
-## Video Link To How To Install Bot: https://vimeo.com/manage/videos/832894106/privacy
+## List of Documentations For Full Project:
+
+i. How To Install Bot
+
+ii. Deployment of StockPro WordPress Website
+
+iii. Running a CI/CD Pipeline on StockPro WordPress Website.
+
+## i. Video Link To How To Install Bot: https://vimeo.com/manage/videos/832894106/privacy
 ## Steps:
 1. Visit tradingview.com through a browser or install a desktop version or or mobile version.
 2. Click on "Get Started" to sign up for a tradingview account
@@ -24,7 +32,7 @@
 
 
 
-## DEPLOYMENT OF STOCKPRO WORDPRESS SITE
+## ii. DEPLOYMENT OF STOCKPRO WORDPRESS SITE
 1. Installation of docker
 
    $ sudo apt install docker.io -y
@@ -50,7 +58,7 @@
    https://ip_address:8080
    
    
-## RUNNING A CI/CD PIPELINE ON STOCKPRO WORDPRESS SITE
+## iii. RUNNING A CI/CD PIPELINE ON STOCKPRO WORDPRESS SITE
 BUILD STAGE 
 Create a scripts folder on the gitlab repository
 Create a build_script.sh file in the scripts folder
@@ -126,7 +134,7 @@ stage: push
         - ./scripts/push_script.sh
  	       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S chmod u+x docker_installation_script.sh && echo '$SERVER_PASSWORD' | sudo -S ./docker_installation_script.sh"
 
-DEPLOY STAGE - [Task: 1325]
+DEPLOY STAGE 
 Create a deploy_script.sh in the scripts directory.
 Input the following commands in the deploy_script.sh
 sudo docker load --input social_reputation.tar

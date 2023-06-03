@@ -1,6 +1,6 @@
 # StockPro-Trading-Bot-Documentation
 
-Steps:
+## Steps:
 1. Visit tradingview.com through a browser or install a desktop version or or mobile version.
 2. Click on "Get Started" to sign up for a tradingview account
 ![image](https://github.com/AlexMicheal500/StockPro-Trading-Bot/assets/99332618/9c82bb42-5b22-4aa7-ab34-db04671154a6)
